@@ -82,6 +82,48 @@ local AirBoosting = Instance.new("TextButton")
 local TextBox = Instance.new("TextBox")
 local StackPlayer = Instance.new("TextButton")
 
+
+function PlayerJoined(text)
+	game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage", {
+		Text = text;
+		Color = Color3.fromRGB(176, 196, 222);
+		Font = Enum.Font.Bangers;
+		TextSize = 25
+	})
+end
+
+
+function PlayerLeft(text)
+	game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage", {
+		Text = text;
+		Color = Color3.fromRGB(255, 182, 180);
+		Font = Enum.Font.Bangers;
+		TextSize = 25
+	})
+end
+
+
+game:GetService("Players").PlayerAdded:Connect(function(whojoined)
+	PlayerJoined(" "..whojoined.Name.." joined the server")
+	if whojoined.Name == "Ultimet_Frayzer" then
+		PlayerJoined(" "..whojoined.Name.." Owner joined the server")
+
+
+
+
+	end
+end)
+
+
+game:GetService("Players").PlayerRemoving:Connect(function(wholeft)
+	PlayerLeft(" "..wholeft.Name.." left The Server")
+	if wholeft.Name == "Ultimet_Frayzer" then
+		PlayerJoined(" "..wholeft.Name.." Owner left the server")
+
+	end
+
+end)
+
 --Properties:
 
 NewOpGui.Name = "NewOpGui"
