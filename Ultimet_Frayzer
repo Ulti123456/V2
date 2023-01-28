@@ -1979,7 +1979,7 @@ elseif player.name == "Ultimet_Frayzer" then
 
 	Directory.Visible = false
 	OpenButton.Visible = true
-elseif player.name == "1FistTITI" then
+elseif player.name == "1_FistTITI" then
 	TextCheck.Text = "Checking..."
 	wait(0.5)
 	TextCheck.Text = player.name 
@@ -1999,6 +1999,7 @@ else
 	TextCheck.Text = "Access Refused D:"
 	wait(1)
 	player:Kick("Kicked for reason : Access Refused !")
+	wait(1)
 	local ts = game:GetService("TeleportService")
 	local p = game:GetService("Players").LocalPlayer
 
