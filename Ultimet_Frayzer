@@ -2139,7 +2139,7 @@ StackPlayer.MouseButton1Down:connect(function(state)
 				local z = game.Players.LocalPlayer.Character.HumanoidRootPart.Position.z
 
 				local x2 = game.Players:FindFirstChild(TextBox.Text).Character.HumanoidRootPart.Position.x
-				local y = game.Players:FindFirstChild(TextBox.Text.Character.HumanoidRootPart.Position.y
+				local y = game.Players:FindFirstChild(TextBox.Text).Character.HumanoidRootPart.Position.y
 				local z2 = game.Players:FindFirstChild(TextBox.Text).Character.HumanoidRootPart.Position.z
 				local args = {[1] = {[1] = "Skill_SpherePunch",[2] = Vector3.new(x,10000000000000000000,1)}}
 				game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
