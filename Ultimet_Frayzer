@@ -1270,7 +1270,7 @@ hellfire.MouseButton1Down:connect(function()
 		while _G.on == 1
 		do
 
-			game.ReplicatedStorage.RemoteEvent:FireServer({"Skill_DevilFlame",game.Players[name.Text]})
+			game.ReplicatedStorage.RemoteEvent:FireServer({"Skill_DevilFlame",game.Players[name_2.Text]})
 			wait(0.6)
 		end
 
@@ -1307,7 +1307,7 @@ reap.MouseButton1Down:connect(function()
 		while _G.on == 1
 		do
 
-			game.ReplicatedStorage.RemoteEvent:FireServer({"Skill_SoulReap",game.Players[name.text]})
+			game.ReplicatedStorage.RemoteEvent:FireServer({"Skill_SoulReap",game.Players[name_2.text]})
 			wait(0.6)
 		end
 
@@ -1351,7 +1351,7 @@ pp.MouseButton1Down:connect(function()
 			for i,v in pairs(game.Players:GetPlayers()) do
 				pcall(function()
 
-					game.ReplicatedStorage.RemoteEvent:FireServer({"Skill_SoulAttack_End",game.Players[name.text]})
+					game.ReplicatedStorage.RemoteEvent:FireServer({"Skill_SoulAttack_End",game.Players[name_2.text]})
 				end)
 
 				wait(0)
