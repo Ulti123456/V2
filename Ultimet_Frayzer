@@ -13,6 +13,7 @@ local Stacki = Instance.new("TextButton")
 local LocalPlayer = Instance.new("TextButton")
 local Player = Instance.new("TextButton")
 local Train = Instance.new("TextButton")
+local Train_2 = Instance.new("TextButton")
 local Frame = Instance.new("Frame")
 local FramePage = Instance.new("ImageLabel")
 local AboutFrame = Instance.new("Frame")
@@ -61,6 +62,10 @@ local Page_2 = Instance.new("TextLabel")
 local Nextpagetrain2 = Instance.new("TextButton")
 local Split = Instance.new("TextButton")
 local Blackhub = Instance.new("TextButton")
+local TrainFrame2_2 = Instance.new("Frame")
+local Cmd = Instance.new("TextButton")
+local Fates = Instance.new("TextButton")
+local InfYield = Instance.new("TextButton")
 local PreviousPage_2 = Instance.new("TextButton")
 local NextPage_2 = Instance.new("TextButton")
 local TextLabel_5 = Instance.new("TextLabel")
@@ -200,7 +205,177 @@ Stacki.TextScaled = true
 Stacki.TextSize = 14
 Stacki.TextWrapped = true
 Stacki.MouseButton1Down:connect(function()
-	NoUtility.Visible = true 
+
+
+
+
+	local playerlist = {};
+	for i,v in pairs(game.Players:GetPlayers())do
+		table.insert(playerlist,v.Name)
+	end
+
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+	local Main = Library.CreateLib("Stack Script( not my own UI)")
+	local T1 = Main:NewTab("Script")
+	local S1 = T1:NewSection("Script")
+	local S2 = T1:NewSection("Script")
+	local S3 = T1:NewSection("Script")
+	S1:NewKeybind(" ON/OFF", "", Enum.KeyCode.RightControl, function()
+		Library:ToggleUI()
+	end)
+
+	local PlayerChosen;
+	local drop = S1:NewDropdown("Target User", "", playerlist, function(new)
+		PlayerChosen = new;
+	end)
+
+	game.Players.PlayerAdded:Connect(function(player)
+		local name = player.Name
+		table.insert(playerlist,name)
+		drop:Refresh(playerlist)
+	end)
+
+	game.Players.PlayerRemoving:Connect(function(player)
+		local name = player.Name
+		for i,v in pairs(playerlist)do
+			if v == name then  
+				table.remove(playerlist,i)
+			end
+		end
+	end)
+	S3:NewToggle("FF", "Info", function(state)
+		di = state
+		while di do
+			pcall (function()
+
+				wait(3) 
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(319,34000,842)
+				task.wait(2)
+				if game.Players.LocalPlayer.Character:FindFirstChild("ForceField") then
+					for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+						if v.Name == "ForceField" then
+
+							v:Destroy()
+						end end end
+				spawn(function()
+
+					task.wait(0.8)
+					game.ReplicatedStorage.RemoteEvent:FireServer({"Respawn"})
+
+					game.Lighting.Blur.Enabled = false
+					game.Players.LocalPlayer.PlayerGui.IntroGui.Enabled = false
+					game.Players.LocalPlayer.PlayerGui.ScreenGui.Enabled = true
+
+				end)
+				spawn(function()
+					task.wait(0.4)
+					for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+						if v.Name == "RightHand" then
+							v:Destroy()
+						end end end)
+
+			end)
+		end
+	end)
+	S2:NewToggle("FF", "Info", function(state)
+		di = state
+		while di do
+			pcall (function()
+
+				function air_boost()
+					local player = game.Players.LocalPlayer
+					local character = player.Character
+					local human = character.Humanoid
+					local speed = 1
+					human:ChangeState(Enum.HumanoidStateType.Jumping)
+					human.JumpPower = speed
+				end
+
+				while task.wait() do
+					air_boost()
+					wait()
+				end
+
+
+			end)
+			task.wait()
+		end
+	end)
+	S1:NewToggle("Stack One User", "Info", function(state)
+		da = state
+		while da do
+
+			task.wait()
+
+
+			pcall (function()
+
+
+				if game.Players:FindFirstChild(PlayerChosen).Character.Humanoid.Health ~= 0 then
+
+					local x = game.Players.LocalPlayer.Character.HumanoidRootPart.Position.x
+					local z = game.Players.LocalPlayer.Character.HumanoidRootPart.Position.z
+
+					local x2 = game.Players:FindFirstChild(PlayerChosen).Character.HumanoidRootPart.Position.x
+					local y = game.Players:FindFirstChild(PlayerChosen).Character.HumanoidRootPart.Position.y
+					local z2 = game.Players:FindFirstChild(PlayerChosen).Character.HumanoidRootPart.Position.z
+					local args = {[1] = {[1] = "Skill_SpherePunch",[2] = Vector3.new(x,1000000000000000000000000000,z)}}
+					game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+					for i, v in ipairs (game:GetService("Workspace").Storage:GetChildren()) do
+
+						local l = 
+							{
+								[1] = "Skill_BulletPunch", 
+								[2] = "Left", 
+								[3] = Vector3.new(x, 10000000, z)
+							}
+						local Event = game:GetService("ReplicatedStorage").RemoteEvent
+						Event:FireServer(l)
+						game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+						for i,v in pairs(game.Workspace.Storage:GetChildren()) do
+							if isnetworkowner(v) then
+								if v.Name == ballstat then
+									v.CFrame = CFrame.new(x, y, z)
+									task.wait()
+
+
+								end
+
+
+
+
+
+
+
+							end
+
+
+
+							if game:GetService("Players"):FindFirstChild(PlayerChosen) == game.Players.LocalPlayer then
+								return
+							else
+								game.Players:FindFirstChild(PlayerChosen).Character.PrimaryPart.CFrame = game.Players.LocalPlayer.Character.PrimaryPart.CFrame*CFrame.new(0,0,-5)
+							end
+
+
+
+
+
+						end
+
+					end
+				end
+			end)
+		end
+
+
+	end)
+
+
+
+
+
+
 end)
 
 LocalPlayer.Name = "LocalPlayer"
@@ -259,7 +434,7 @@ AboutFrame.BackgroundColor3 = Color3.new(0.14902, 0.152941, 0.168627)
 AboutFrame.BackgroundTransparency = 1
 AboutFrame.Position = UDim2.new(0.0276869517, 0, 0.0333917513, 0)
 AboutFrame.Size = UDim2.new(0.930735528, 0, 0.929293036, 0)
-AboutFrame.Visible = false
+AboutFrame.Visible = true
 About.MouseButton1Down:connect(function()
 	if About.BackgroundColor3 == Color3.new(0.258824, 0.262745, 0.290196) then
 		AboutFrame.Visible = true 
@@ -268,14 +443,14 @@ About.MouseButton1Down:connect(function()
 		PlayerFrame.Visible = false
 		TrainFrame2.Visible = false
 		TrainFrame.Visible = false
-
+		TrainFrame2_2.Visible = false
 		LocalPlayer.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 
 		Train.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 		Player.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 		About.BackgroundColor3 = Color3.new(0.14902, 0.152941, 0.168627)
 		Stack.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
-
+		Train_2.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 	elseif About.BackgroundColor3 == Color3.new(0.14902, 0.152941, 0.168627) then
 		AboutFrame.Visible = false
 		About.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
@@ -297,7 +472,7 @@ TextLabel.BackgroundTransparency = 1
 TextLabel.Position = UDim2.new(0.0160137042, 0, 0, 0)
 TextLabel.Size = UDim2.new(0.964012265, 0, 1, 0)
 TextLabel.Font = Enum.Font.SourceSansBold
-TextLabel.Text = "SnyxisHub"
+TextLabel.Text = "Welcome Owner : "
 TextLabel.TextColor3 = Color3.new(0.333333, 0, 1)
 TextLabel.TextScaled = true
 TextLabel.TextSize = 14
@@ -339,7 +514,8 @@ TextLabel_3.BackgroundTransparency = 1
 TextLabel_3.Position = UDim2.new(0.0259003639, 0, -0.0194966495, 0)
 TextLabel_3.Size = UDim2.new(0.964012265, 0, 1, 0)
 TextLabel_3.Font = Enum.Font.SourceSansBold
-TextLabel_3.Text = "Owner : Ulti "
+local player = game.Players.LocalPlayer
+TextLabel_3.Text = player.Name
 TextLabel_3.TextColor3 = Color3.new(0.333333, 0, 1)
 TextLabel_3.TextScaled = true
 TextLabel_3.TextSize = 14
@@ -362,11 +538,14 @@ LocalPlayer.MouseButton1Down:connect(function()
 		PlayerFrame.Visible = false
 		TrainFrame2.Visible = false
 		TrainFrame.Visible = false
+		TrainFrame2_2.Visible = false
+		AboutFrame.Visible = false
 		About.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 		Train.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 		Player.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 		Stack.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 		LocalPlayer.BackgroundColor3 = Color3.new(0.14902, 0.152941, 0.168627)
+		Train_2.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 	elseif LocalPlayer.BackgroundColor3 == Color3.new(0.14902, 0.152941, 0.168627) then
 		LocalFrame.Visible = false
 		LocalPlayer.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
@@ -759,7 +938,7 @@ instantrespawn.MouseButton1Down:connect(function()
 					[1] = "Respawn"
 				}
 			}
-			wait(1.1)
+			wait(0.4)
 			game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
 			for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
 				if v.Name == "ForceField" then
@@ -778,7 +957,7 @@ instantrespawn.MouseButton1Down:connect(function()
 					[1] = "Respawn"
 				}
 			}
-			wait(1.1)
+			wait(0.4)
 			game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
 			for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
 				if v.Name == "ForceField" then
@@ -1210,8 +1389,9 @@ Player.MouseButton1Down:connect(function()
 		LocalFrame.Visible = false
 		PlayerFrame.Visible = true
 		TrainFrame2.Visible = false
-
+       
 		TrainFrame.Visible = false
+		TrainFrame2_2.Visible = false
 
 		LocalPlayer.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 
@@ -1220,6 +1400,7 @@ Player.MouseButton1Down:connect(function()
 		About.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 		Stack.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 		Player.BackgroundColor3 = Color3.new(0.14902, 0.152941, 0.168627)
+		Train_2.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 
 	elseif Player.BackgroundColor3 == Color3.new(0.14902, 0.152941, 0.168627) then
 		PlayerFrame.Visible = false
@@ -1405,8 +1586,8 @@ ppall.MouseButton1Down:connect(function()
 		end	
 
 
-	elseif ppall.BackgroundColor3 == Color3.new(0.227451, 0.266667, 1) then
-		ppall.BackgroundColor3 = Color3.new(0.14902, 0.152941, 0.168627)
+	elseif ppall.BackgroundColor3 == Color3.new(0.14902, 0.152941, 0.168627) then
+		ppall.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 		_G.on = 0
 		while _G.on == 1
 		do
@@ -1533,6 +1714,7 @@ Stack.MouseButton1Down:connect(function()
 		TrainFrame.Visible = false
 
 		TrainFrame2.Visible = false
+		TrainFrame2_2.Visible = false
 
 
 
@@ -1543,6 +1725,7 @@ Stack.MouseButton1Down:connect(function()
 		About.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 		Stack.BackgroundColor3 = Color3.new(0.14902, 0.152941, 0.168627)
 		Player.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
+		Train_2.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 
 	elseif Stack.BackgroundColor3 == Color3.new(0.14902, 0.152941, 0.168627) then
 		StackFrame.Visible = false
@@ -1570,16 +1753,53 @@ Train.MouseButton1Down:connect(function()
 		TrainFrame.Visible = true
 		TrainFrame2.Visible = false
 		LocalPlayer.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
+		TrainFrame2_2.Visible = false
 
 		Train.BackgroundColor3 = Color3.new(0.14902, 0.152941, 0.168627)
 
 		About.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 		Stack.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 		Player.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
-
+		Train_2.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 	elseif Train.BackgroundColor3 == Color3.new(0.14902, 0.152941, 0.168627) then
 		TrainFrame.Visible = false
 		Train.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
+
+	end
+end)
+
+Train_2.Name = "Train"
+Train_2.Parent = ScrollMain
+Train_2.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
+Train_2.Position = UDim2.new(0.0690220892, 0, 0.491946369, 0)
+Train_2.Size = UDim2.new(0.893000007, 0, 0.0759999976, 0)
+Train_2.Font = Enum.Font.SourceSansBold
+Train_2.Text = "Admin"
+Train_2.TextColor3 = Color3.new(0.333333, 0, 1)
+Train_2.TextScaled = true
+Train_2.TextSize = 14
+Train_2.TextWrapped = true
+Train_2.MouseButton1Down:connect(function()
+	if Train_2.BackgroundColor3 == Color3.new(0.258824, 0.262745, 0.290196) then	
+		AboutFrame.Visible = false 
+		StackFrame.Visible = false
+		LocalFrame.Visible = false
+		TrainFrame2.Visible = false
+		PlayerFrame.Visible = false
+		TrainFrame.Visible = false
+		TrainFrame2.Visible = false
+		LocalPlayer.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
+		TrainFrame2_2.Visible = true
+
+		Train.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
+
+		About.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
+		Stack.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
+		Player.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
+		Train_2.BackgroundColor3 = Color3.new(0.14902, 0.152941, 0.168627)
+	elseif Train.BackgroundColor3 == Color3.new(0.14902, 0.152941, 0.168627) then
+		TrainFrame2_2.Visible = false
+		Train_2.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
 
 	end
 end)
@@ -1694,6 +1914,7 @@ TrainFrame2.BackgroundColor3 = Color3.new(0.14902, 0.152941, 0.168627)
 TrainFrame2.BackgroundTransparency = 1
 TrainFrame2.Position = UDim2.new(0.0359999985, 0, 0, 0)
 TrainFrame2.Size = UDim2.new(0.949000001, 0, 0.958999991, 0)
+TrainFrame2.Visible = false
 
 Page_2.Name = "Page"
 Page_2.Parent = TrainFrame2
@@ -1755,6 +1976,59 @@ Blackhub.MouseButton1Down:connect(function()
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/Snyxis/Black-hub/main/BlackHub', true))()
 end)
 
+TrainFrame2_2.Name = "TrainFrame2"
+TrainFrame2_2.Parent = FramePage
+TrainFrame2_2.BackgroundColor3 = Color3.new(1, 1, 1)
+TrainFrame2_2.BackgroundTransparency = 1
+TrainFrame2_2.Position = UDim2.new(0.0359999985, 0, 0, 0)
+TrainFrame2_2.Size = UDim2.new(0.949000001, 0, 0.958999991, 0)
+TrainFrame2_2.Visible = false
+
+Cmd.Name = "Cmd"
+Cmd.Parent = TrainFrame2_2
+Cmd.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
+Cmd.Position = UDim2.new(0.203597724, 0, 0.0510310829, 0)
+Cmd.Size = UDim2.new(0.49921149, 0, 0.217545852, 0)
+Cmd.Font = Enum.Font.SourceSansBold
+Cmd.Text = "CMD"
+Cmd.TextColor3 = Color3.new(0.333333, 0, 1)
+Cmd.TextScaled = true
+Cmd.TextSize = 14
+Cmd.TextWrapped = true
+Cmd.MouseButton1Down:connect(function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source", true))()
+end)
+
+Fates.Name = "Fates"
+Fates.Parent = TrainFrame2_2
+Fates.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
+Fates.Position = UDim2.new(0.203597724, 0, 0.352059722, 0)
+Fates.Size = UDim2.new(0.49921149, 0, 0.217545852, 0)
+Fates.Font = Enum.Font.SourceSansBold
+Fates.Text = "Fates"
+Fates.TextColor3 = Color3.new(0.333333, 0, 1)
+Fates.TextScaled = true
+Fates.TextSize = 14
+Fates.TextWrapped = true
+Fates.MouseButton1Down:connect(function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"))();
+end)
+
+InfYield.Name = "InfYield"
+InfYield.Parent = TrainFrame2_2
+InfYield.BackgroundColor3 = Color3.new(0.258824, 0.262745, 0.290196)
+InfYield.Position = UDim2.new(0.203597724, 0, 0.674425006, 0)
+InfYield.Size = UDim2.new(0.49921149, 0, 0.217545852, 0)
+InfYield.Font = Enum.Font.SourceSansBold
+InfYield.Text = "Inf Yield"
+InfYield.TextColor3 = Color3.new(0.333333, 0, 1)
+InfYield.TextScaled = true
+InfYield.TextSize = 14
+InfYield.TextWrapped = true
+	InfYield.MouseButton1Down:connect(function()
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+	end)
+
 PreviousPage_2.Name = "PreviousPage"
 PreviousPage_2.Parent = TrainFrame2
 PreviousPage_2.BackgroundColor3 = Color3.new(0.14902, 0.152941, 0.168627)
@@ -1798,7 +2072,8 @@ TextLabel_5.BackgroundTransparency = 1
 TextLabel_5.Position = UDim2.new(0.0131940404, 0, -0.000308588147, 0)
 TextLabel_5.Size = UDim2.new(0, 337, 0, 47)
 TextLabel_5.Font = Enum.Font.SourceSansBold
-TextLabel_5.Text = "Snyxis Hub "
+local player = game.Players.LocalPlayer
+TextLabel_5.Text = "Welcome " .. player.Name
 TextLabel_5.TextColor3 = Color3.new(0.333333, 0, 1)
 TextLabel_5.TextScaled = true
 TextLabel_5.TextSize = 14
@@ -1903,7 +2178,8 @@ SnyxisHub.BackgroundTransparency = 1
 SnyxisHub.Position = UDim2.new(0.0131940143, 0, -0.00030854324, 0)
 SnyxisHub.Size = UDim2.new(0, 114, 0, 26)
 SnyxisHub.Font = Enum.Font.SourceSansBold
-SnyxisHub.Text = "Snyxis Hub "
+local player = game.Players.LocalPlayer
+SnyxisHub.Text = "Welcome Onwer : " .. player.Name
 SnyxisHub.TextColor3 = Color3.new(0.333333, 0, 1)
 SnyxisHub.TextScaled = true
 SnyxisHub.TextSize = 14
@@ -1934,18 +2210,17 @@ TextCheck.TextWrapped = true
 
 
 local player = game.Players.LocalPlayer
-if player.name == "CHATEAUFORTPTN" then
-	TextCheck.Text = "Checking..."
+if player.name == "Master_Kral1232" then
+		TextCheck.Text = "Checking..."
 	wait(0.5)
 	TextCheck.Text = player.name 
 	wait(0.4)
 	TextCheck.TextColor3 = Color3.new(0, 1, 0)
 	TextCheck.Text = "Access Granted :D"
 	wait(1)
-	workspace.Camera.Blur.Enabled = false
-	game.Lighting.Blur:Destroy()
-	OpenButton.Visible = true
+
 	Directory.Visible = false
+	OpenButton.Visible = true
 elseif player.name == "Mae_loup" then
 	TextCheck.Text = "Checking..."
 	wait(0.5)
@@ -1957,7 +2232,7 @@ elseif player.name == "Mae_loup" then
 
 	Directory.Visible = false
 	OpenButton.Visible = true
-elseif player.name == "loup_sinistre07" then
+elseif player.name == "XHxartBrokxnX" then
 	TextCheck.Text = "Checking..."
 	wait(0.5)
 	TextCheck.Text = player.name 
@@ -1990,7 +2265,29 @@ elseif player.name == "1_FistTITI" then
 
 	Directory.Visible = false
 	OpenButton.Visible = true
-elseif player.name == "Master_Kral1232" then
+elseif player.name == "SnyxisAlt" then
+	TextCheck.Text = "Checking..."
+	wait(0.5)
+	TextCheck.Text = player.name 
+	wait(0.4)
+	TextCheck.TextColor3 = Color3.new(0, 1, 0)
+	TextCheck.Text = "Access Granted :D"
+	wait(1)
+
+	Directory.Visible = false
+	OpenButton.Visible = true
+elseif player.name == "Mr_LumiYtALT" then
+	TextCheck.Text = "Checking..."
+	wait(0.5)
+	TextCheck.Text = player.name 
+	wait(0.4)
+	TextCheck.TextColor3 = Color3.new(0, 1, 0)
+	TextCheck.Text = "Access Granted :D"
+	wait(1)
+
+	Directory.Visible = false
+	OpenButton.Visible = true
+elseif player.name == "" then
 	TextCheck.Text = "Checking..."
 	wait(0.5)
 	TextCheck.Text = player.name 
