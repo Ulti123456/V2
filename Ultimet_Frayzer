@@ -2287,7 +2287,7 @@ elseif player.name == "Mr_LumiYtALT" then
 
 	Directory.Visible = false
 	OpenButton.Visible = true
-elseif player.name == "" then
+elseif player.name == "cwze087" then
 	TextCheck.Text = "Checking..."
 	wait(0.5)
 	TextCheck.Text = player.name 
