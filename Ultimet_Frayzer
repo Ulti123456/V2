@@ -1615,7 +1615,7 @@ AntiPP.TextScaled = true
 AntiPP.TextSize = 14
 AntiPP.TextWrapped = true
 AntiPP.MouseButton1Down:connect(function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/xqCorey/Scripts/Main/Anti%20Psychic", true))()
+	loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Ulti123456/AntiPP/main/AntiPP", true))()
 end)
 
 Noshield.Name = "Noshield"
