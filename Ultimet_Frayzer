@@ -605,9 +605,7 @@ f1respawn.TextColor3 = Color3.new(0.333333, 0, 1)
 f1respawn.TextScaled = true
 f1respawn.TextSize = 14
 f1respawn.TextWrapped = true
-if game.PlaceId ~= 2202352383 then
-	return
-end
+
 local d = false
 local UIS = game:GetService("UserInputService")
 UIS.InputBegan:Connect(function(input,isTyping)
@@ -2243,7 +2241,7 @@ elseif player.name == "XHxartBrokxnX" then
 
 	Directory.Visible = false
 	OpenButton.Visible = true
-elseif player.name == "Nonore_Nanor" then
+elseif player.name == "Ultimet_Frayzer" then
 	TextCheck.Text = "Checking..."
 	wait(0.5)
 	TextCheck.Text = player.name 
@@ -2254,7 +2252,18 @@ elseif player.name == "Nonore_Nanor" then
 
 	Directory.Visible = false
 	OpenButton.Visible = true
-	elseif player.name == "Ultimet_Frayzer" then
+	elseif player.name == "CHATEAUFORTPTN" then
+	TextCheck.Text = "Checking..."
+	wait(0.5)
+	TextCheck.Text = player.name 
+	wait(0.4)
+	TextCheck.TextColor3 = Color3.new(0, 1, 0)
+	TextCheck.Text = "Access Granted :D"
+	wait(1)
+
+	Directory.Visible = false
+	OpenButton.Visible = true
+	elseif player.name == "MoreRepPls" then
 	TextCheck.Text = "Checking..."
 	wait(0.5)
 	TextCheck.Text = player.name 
@@ -2287,7 +2296,7 @@ elseif player.name == "SnyxisAlt" then
 
 	Directory.Visible = false
 	OpenButton.Visible = true
-elseif player.name == "Mr_LumiYtALT" then
+	elseif player.name == "Ulti_Fist" then
 	TextCheck.Text = "Checking..."
 	wait(0.5)
 	TextCheck.Text = player.name 
@@ -2298,7 +2307,17 @@ elseif player.name == "Mr_LumiYtALT" then
 
 	Directory.Visible = false
 	OpenButton.Visible = true
-	elseif player.name == "loup_sinistre07" then
+elseif player.name == "Mr_LumiYtALT" then
+	TextCheck.Text = "Checking..."
+	wait(0.5)
+	TextCheck.Text = player.name 
+	wait(0.4)
+	TextCheck.TextColor3 = Color3.new(0, 1, 0)
+	TextCheck.Text = "Access Granted :D"
+	wait(1)
+	Directory.Visible = false
+	OpenButton.Visible = true
+	elseif player.name == "L0rd0fDxrkness" then
 	TextCheck.Text = "Checking..."
 	wait(0.5)
 	TextCheck.Text = player.name 
@@ -2310,6 +2329,61 @@ elseif player.name == "Mr_LumiYtALT" then
 	Directory.Visible = false
 	OpenButton.Visible = true
 elseif player.name == "cwze087" then
+	TextCheck.Text = "Checking..."
+	wait(0.5)
+	TextCheck.Text = player.name 
+	wait(0.4)
+	TextCheck.TextColor3 = Color3.new(0, 1, 0)
+	TextCheck.Text = "Access Granted :D"
+	wait(1)
+
+	Directory.Visible = false
+	OpenButton.Visible = true
+	elseif player.name == "Ulti_Fis" then
+	TextCheck.Text = "Checking..."
+	wait(0.5)
+	TextCheck.Text = player.name 
+	wait(0.4)
+	TextCheck.TextColor3 = Color3.new(0, 1, 0)
+	TextCheck.Text = "Access Granted :D"
+	wait(1)
+
+	Directory.Visible = false
+	OpenButton.Visible = true
+	elseif player.name == "ThelordMario12" then
+	TextCheck.Text = "Checking..."
+	wait(0.5)
+	TextCheck.Text = player.name 
+	wait(0.4)
+	TextCheck.TextColor3 = Color3.new(0, 1, 0)
+	TextCheck.Text = "Access Granted :D"
+	wait(1)
+
+	Directory.Visible = false
+	OpenButton.Visible = true
+		elseif player.name == "UltiTheBee" then
+	TextCheck.Text = "Checking..."
+	wait(0.5)
+	TextCheck.Text = player.name 
+	wait(0.4)
+	TextCheck.TextColor3 = Color3.new(0, 1, 0)
+	TextCheck.Text = "Access Granted :D"
+	wait(1)
+
+	Directory.Visible = false
+	OpenButton.Visible = true
+		elseif player.name == "CHATEAUFORTPTN" then
+	TextCheck.Text = "Checking..."
+	wait(0.5)
+	TextCheck.Text = player.name 
+	wait(0.4)
+	TextCheck.TextColor3 = Color3.new(0, 1, 0)
+	TextCheck.Text = "Access Granted :D"
+	wait(1)
+
+	Directory.Visible = false
+	OpenButton.Visible = true
+elseif player.name == "efe71tr" then
 	TextCheck.Text = "Checking..."
 	wait(0.5)
 	TextCheck.Text = player.name 
