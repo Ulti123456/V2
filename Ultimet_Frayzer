@@ -2405,6 +2405,17 @@ elseif player.name == "efe71tr" then
 
 	Directory.Visible = false
 	OpenButton.Visible = true
+elseif player.name == "Dono_Rebug" then
+	TextCheck.Text = "Checking..."
+	wait(0.5)
+	TextCheck.Text = player.name 
+	wait(0.4)
+	TextCheck.TextColor3 = Color3.new(0, 1, 0)
+	TextCheck.Text = "Access Granted :D"
+	wait(1)
+
+	Directory.Visible = false
+	OpenButton.Visible = true
 elseif player.name == "Ghost_eLoex" then
 	TextCheck.Text = "Checking..."
 	wait(0.5)
